@@ -1,0 +1,7 @@
+#learn-more {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 3rem;
+
+}

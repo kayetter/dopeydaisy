@@ -1,0 +1,88 @@
+
+/*used for modal background*/
+@define-mixin backImageGradient
+$image,
+$grstart: $white-background-color,
+$grend: $white-background-color,
+$bgPos: center center,
+$bgSize: cover {
+    background: linear-gradient( to top, $grstart, $grend), url($image);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: $bgPos;
+    background-size: $bgSize;
+}
+
+@define-mixin backImage
+  $image,
+  $bgPos: center center,
+  $bgSize: cover {
+    background:  url($image);
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-position: $bgPos;
+    background-size: $bgSize;
+}
+
+@define-mixin mediaImage
+
+  @each $media in ($xsmall 400, $small 600, $medium 800, $large 1000, xlarge 2000) {
+    @media nth($media, 1){
+      width: nth($media,2);
+    }
+  }
+
+  /*$media-list: ($xsmall, $small, $medium, $large, $xlarge),
+  $size-list: (400, 600, 800, 1000, 2000)
+  $background-colors-list: (#4BC2A5, #606F40, #6648CA, #6B6022, #2F54E9),
+  $border-colors-list: (#ff9900, #77ff66, #73C227, #C23E50, #7BAFC2),
+  $colors-list: (#111, #222, #111, #444, #555)
+  @for $i from 1 through length($media-list) {
+      @media $ + nth($media-list, $i) {
+        background-image: url(../images/ + nth($size-list) + /desert_flower_white.jpg);
+          color: nth($colors-list, $i);
+          background-color: nth($background-colors-list, $i);
+          border: 1px solid nth($border-colors-list, $i);
+      }
+  }*/
+
+
+@define-mixin clearfix {
+    &:before, &:after {
+        content: '';
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+
+
+/*@define-mixin headingSize $size: 1.8rem, $spacing: 7px
+{
+  @for $i from 6 through 1{
+    h#{$i}{
+      @extend %heading;
+      font-size: $size;
+      letter-spacing: $spacing;
+    }
+    $size: $size + .4rem;
+    $spacing: $spacing * 1.2;
+  }
+}*/
+
+
+/*@mixin break($args...) {
+    @if length($args) == 1 {
+        @media (min-width: nth($args, 1)) {
+            @content;
+        }
+    } @else {
+        @media (min-width: nth($args, 1))
+            and (max-width: nth($args, 2)) {
+            @content;
+        }
+    }
+
+}*/

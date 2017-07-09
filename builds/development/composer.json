@@ -1,0 +1,7 @@
+{
+    "require": {
+        "tinify/tinify": "^1.5",
+        "intervention/image": "^2.4"
+
+    }
+}

@@ -1,0 +1,216 @@
+    /*====================MAIN PAGE STYLES============*/
+
+    /* Track */
+
+
+    html {
+        /*---sets font size using rem to exact pixel. for example 1.8rem = 18 px.*/
+        font-size: 62.5%;
+        box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+
+
+
+    body {
+        background: transparent;
+        margin: 0;
+        padding: 0;
+        color: black;
+        font-family: $font-main;
+        font-size: 1.8rem;
+        line-height: 160%;
+        font-weight: $fwt-thin;
+        -webkit-overflow-scrolling: touch;
+
+
+        .main {
+          position: relative;
+          -webkit-overflow-scrolling: touch;
+          width: 100%;
+
+        }
+
+        .hidden {
+          display: none;
+        }
+      }
+
+    .logo {
+      display: block;
+      position: relative;
+      padding: 1rem 0;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      z-index: 45;
+      }
+
+
+    %heading {
+        font-family: $font-main;
+        line-height: 1.5;
+        word-wrap: break-word;
+        text-align: center;
+        color: $white;
+        padding: 1rem 0;
+        font-weight: 500;
+        margin: 0;
+    }
+
+
+h1 {
+  @extend %heading;
+  font-family: $font-heading;
+  letter-spacing: 3px;
+  font-size: 3.0rem;
+  color: $brightblue;
+
+    @media $xsmall {
+      font-size: 3.3rem;
+      letter-spacing: 4px;
+
+    }
+
+    @media $small {
+      font-size: 4.4rem;
+      letter-spacing: 6px;
+    }
+    @media $medium {
+      font-size: 5.0rem;
+      letter-spacing: 7px;
+    }
+    @media $large {
+      font-size: 5.8rem;
+      letter-spacing: 9px;
+    }
+
+  }/*end of h1*/
+
+  h2 {
+    @extend %heading;
+    letter-spacing: 3px;
+    font-size: 2.0rem;
+
+    @media $xsmall {
+      font-size: 2.4rem;
+      letter-spacing: 3px;
+    }
+    @media $small {
+      font-size: 2.8rem;
+      letter-spacing: 3px;
+    }
+
+  }/*end h2*/
+
+  h3 {
+    @extend %heading;
+    letter-spacing: normal;
+    font-size: 1.8rem;
+
+    @media $xsmall {
+      font-size: 2.0rem;
+    }
+    @media $medium {
+      font-size: 2.4rem;
+    }
+  }
+
+  h4 {
+    @extend %heading;
+  }
+
+  svg {
+    display: block;
+    margin: auto;
+    width: 44px;
+    text-align: center;
+  }
+
+  p {
+    color: $blue;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.8rem;
+    @media $medium {
+      margin: auto;
+      font-size: 2.0rem;
+    }
+  }
+
+em {
+  font-family: $font-cursive;
+  color: $DRDorange;
+  font-size: 120%;
+}
+
+a {
+    color: $yellow;
+    font-size: 1.6rem;
+    /*width: 200px;*/
+    text-align: center;
+    transition: color .3s ease-out;
+    padding: 0 .4rem;
+    @media $xsmall {
+      font-size: 2.0rem;
+    }
+    &:hover, em:hover {
+        color: $daisy;
+    }
+    &:after {
+        display: block;
+        content: '';
+        background-color: $daisy;
+        width: 0;
+        height: 3px;
+        transition: width .3s ease-in, background-color .3s ease-out;
+    }
+
+    &:hover:after {
+        content: '';
+        width: 100%;
+        margin: auto;
+    }
+}
+
+.a-with-img {
+  display: block;
+  margin: auto;
+  &:hover {
+    cursor: pointer;
+  }
+/*removing the underline effect on logo hover*/
+  &:hover:after {
+    width: 0;
+  }
+}
+
+.main {
+  min-height: 100vh;
+}
+
+svg {
+  display: block;
+}
+
+img {
+  display: block;
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+}
+
+.footer {
+  padding: 3rem 0;
+}
+
+.z-45 {
+  z-index: 45;
+}
+
+.z-999 {
+  z-index: 999;
+}

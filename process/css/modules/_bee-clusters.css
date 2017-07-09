@@ -1,0 +1,119 @@
+%bee {
+  width: 60px;
+  position: absolute;
+}
+
+#bee-cluster-1 {
+
+  .bee-1 {
+    @extend %bee;
+    top:10%;
+    left: 10%;
+    transform: rotate(40deg);
+  }
+  .bee-2 {
+    @extend %bee;
+    width: 55px;
+    bottom: 30%;
+    left: 10%;
+    transform: rotate(-20deg);
+  }
+  .bee-3 {
+    @extend %bee;
+    width: 25px;
+    top: 30%;
+    left: 40%;
+    }
+  .bee-4 {
+    @extend %bee;
+    bottom: 30%;
+    right: 35%;
+    transform: rotate(190deg);
+  }
+  .bee-5 {
+    @extend %bee;
+    bottom: 0;
+    width: 55px;
+    left: 26%;
+    transform: rotate(-40deg);
+    z-index: 50;
+  }
+} /*end of .bee-cluster-1*/
+
+#bee-cluster-2 {
+  margin-top: 0;
+  margin-bottom: 6rem;
+      .bee-1 {
+        @extend %bee;
+        width: 65px;
+        top: 0;
+        left: 50%;
+        transform: rotate(190deg);
+      }
+
+      .bee-2 {
+        @extend %bee;
+        width: 55px;
+        top: 30%;
+        left: 10%;
+        transform: rotate(-20deg);
+      }
+      .bee-3 {
+        @extend %bee;
+        width: 25px;
+        top: 30%;
+        left: 40%;
+        }
+      .bee-4 {
+        @extend %bee;
+        bottom: 25%;
+        left: 26%;
+        transform: rotate(-40deg);
+      }
+      .bee-5 {
+        @extend %bee;
+        top: 45%;
+        right: 30%;
+        width: 55px;
+        z-index: 50;
+      }
+} /*end of bee-cluster-2*/
+
+#bee-cluster-3 {
+  display: none;
+  @media $medium {
+    display: block;
+  }
+  .bee-1 {
+      @extend %bee;
+      top:10%;
+      left: 10%;
+      transform: rotate(40deg);
+    }
+    .bee-2 {
+      @extend %bee;
+      width: 55px;
+      bottom: 30%;
+      left: 10%;
+      transform: rotate(-20deg);
+    }
+    .bee-3 {
+      @extend %bee;
+      width: 35px;
+      top: 20%;
+      right: 20%;
+      }
+    .bee-4 {
+      @extend %bee;
+      width: 47px;
+      bottom: 30%;
+      right: 10%;
+      transform: rotate(190deg);
+    }
+    .bee-5 {
+      @extend %bee;
+      bottom: 10px;
+      width: 45px;
+      left: 26%;
+    }
+}/*end of bee-cluster-3*/

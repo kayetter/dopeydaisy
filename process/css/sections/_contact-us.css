@@ -1,0 +1,26 @@
+#contact-us {
+  padding: 0 0 4%;
+
+  h3 {
+    font-size: 3.0rem;
+    line-height: 1.1;
+  }
+
+  h4 {
+    padding: 0;
+    font-size: 125%
+  }
+
+  a  {
+    color: $brightblue;
+    font-family: $font-heading;
+    letter-spacing: 5px;
+    font-size: 3rem;
+    &:hover {
+      color: $sand;
+    }
+
+
+
+  }
+}/*end of contact us*/

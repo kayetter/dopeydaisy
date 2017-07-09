@@ -1,0 +1,1 @@
+<?php header("Location: dopeydaisy.dev/bizcards/kristinyetter_redirect.php?serf"); exit; ?>

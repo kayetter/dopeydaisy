@@ -1,0 +1,27 @@
+.section {
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+
+  /*min-height: 100vh;*/
+}
+
+.container {
+  position: relative;
+  width: 100%;
+
+    .row {
+      display: block;
+          @media $medium {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+        }
+
+
+    } /*end of row*/
+} /*end of container*/
+
+
+
+/*end of section*/

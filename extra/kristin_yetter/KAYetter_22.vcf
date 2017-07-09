@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Kristin Yetter
+N:Yetter;Kristin;;;
+EMAIL;TYPE=INTERNET;TYPE=WORK:kristin@dameranchdesigns.com
+TEL;TYPE=CELL:314-495-9734
+ADR;TYPE=HOME:;;I am here ... @ Sunday Lane;Kalispell;MT;;
+ORG:Dame Ranch Designs
+TITLE:Owner and Co-Creator
+item1.URL:https\://dameranchdesigns.com
+item1.X-ABLabel:_$!<HomePage>!$_
+END:VCARD

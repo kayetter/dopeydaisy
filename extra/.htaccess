@@ -1,0 +1,46 @@
+
+
+<IfModule mod_suphp.c>
+suPHP_ConfigPath /home2/kayetter/public_html/dopeydaisy.com/php.ini
+<Files php.ini> order allow,deny
+deny from all
+</Files>
+</IfModule>
+
+
+# Use PHP56
+AddHandler application/x-httpd-php56 .php
+
+# Prevent Apache from serving .ht* files:
+<FilesMatch "^\.ht">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+# Never use www in the domain
+# Replace 'example.com' with your domain name
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.(([a-z0-9_]+\.)?dopeydaisy\.com)$ [NC]
+RewriteRule .? http://%1%{REQUEST_URI} [R=301,L]
+
+# Always use https for secure connections
+# Replace 'example.com' with your domain name
+# (as it appears on your SSL certificate)
+#RewriteEngine On
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ https://dopeydaisy.com/$1 [R=301,L]
+
+
+#cache all the things:
+#one year for most static assets
+#<filesMatch ".(ico|jpeg|jpg|png|svg|json|woff|ttf|eot)$">
+#    Header set Cache-Control "max-age=3153600, public"
+#</filesMatch>
+
+# cache for one month
+#<filesMatch ".(css|js)$">
+#Header set Cache-Control "max-age=2628000, public"
+#</filesMatch>
+
+#prevents access to the folders
+#RewriteRule ^(client_portal/includes/) - [F,L,NC]

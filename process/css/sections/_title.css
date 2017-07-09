@@ -1,0 +1,62 @@
+/*-----------Header Styles--------------------*/
+
+
+
+#title-section {
+    display: flex;
+    max-height: 760px;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+
+    #title {
+        position: relative;
+        margin-top: 6rem;
+
+        h1 {
+            color: $DRDblue;
+            padding: 3rem 0 1rem;
+        }
+        h3 {
+            padding-top: 0;
+            padding-bottom: 2rem;
+            color: $white;
+            letter-spacing: 3px;
+            @media $medium {
+              font-size: 3.2rem;
+              letter-spacing: 5px;
+            }
+        }
+        div {
+            font-family: $font-cursive;
+            text-align: center;
+            color: $white;
+            padding: 10px 0;
+            font-size: 1.8rem;
+            @media $small {
+                font-size: 2.2rem;
+            }
+            @media $medium {
+                font-size: 2.8rem;
+            }
+        }
+
+    }
+    /*end of #title*/
+    #bee-down {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+
+      #title-bee {
+        position: relative;
+        transform: rotate(150deg);
+        width: 66px;
+      }
+    }
+
+
+}
+/*end of #title-section*/

@@ -1,0 +1,39 @@
+.footer {
+  display: block;
+  width: 100%;
+  font-size: 80%;
+  background: white;
+  padding: 1rem;
+  color: $blue;
+  @media $medium {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    p {
+      padding-top: 0;
+    }
+
+  }
+  div {
+    font-size: 70%;
+    line-height: 1.4;
+    text-align: center;
+    @media $medium {
+      font-size: 80%;
+    }
+    p, a {
+      font-size: inherit;
+      line-height: 1.2;
+      color: $yellow;
+    }
+
+
+    .drd-a {
+      letter-spacing: 2px;
+      @media $large {
+        letter-spacing: 3px;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,16 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Greg Yetter
+N:Yetter;Greg;;;
+EMAIL;TYPE=INTERNET:gyett@yahoo.com
+TEL;TYPE=CELL:+1 (330) 958-0337
+item1.TEL:(314) 313-7900
+item1.X-ABLabel:facetime
+ADR;TYPE=HOME:;;Sunday Lane;Kalispell;MT;;
+ORG:and Every Guy
+TITLE:Any Guy
+item2.URL:dameranchdesigns.com
+item2.X-ABLabel:_$!<HomePage>!$_
+item3.URL:greg.yetter?water
+item3.X-ABLabel:PROFILE
+END:VCARD

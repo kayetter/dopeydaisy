@@ -1,0 +1,34 @@
+.carousel {
+  .carousel-div {
+    max-width: 650px;
+    margin: auto;
+    background: $white;
+    padding: 1rem;
+    @media $small {
+      padding: 3rem;
+    }
+  }
+
+  #bmb-slide img {
+    padding-top: 1rem;
+  }
+
+.slide-div {
+  margin: auto;
+  padding: 0;
+
+    img {
+       width: 100%;
+       min-width: 300px;
+       max-width: 500px;
+       margin: auto;
+       transition: all ease 1s;
+       z-index: 99;
+       &:hover {
+         cursor: pointer;
+         transform: scale(1.1,1.1);
+         }
+    }
+
+  }/*end of slid-div*/
+} /*end of carousel-div*/

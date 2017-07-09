@@ -1,0 +1,142 @@
+
+/*//styling for jquery modal to get the modal in foreground of window*/
+.blocker {
+  -webkit-overflow-scrolling: touch;
+z-index: 50;
+@mixin backImageGradient '../images/backgrounds/desert_flower_white_2000.jpg', $white-background-color, $yel-background-color;
+/*background-image: url('../images/backgrounds/desert_flower_white_300.jpg');
+background-repeat: no-repeat;
+background-size: cover;
+background-position: fixed;
+  @media $small {
+    background-image: url('../images/backgrounds/desert_flower_white_600.jpg');
+
+  }
+  @media $medium {
+    background-image: url('../images/backgrounds/desert_flower_white_800.jpg');
+
+  }
+
+  @media $large {
+    background-image: url('../images/backgrounds/desert_flower_white_1000.jpg');
+
+  }
+  @media $xlarge {
+    background-image: url('../images/backgrounds/desert_flower_white_2000.jpg');
+
+  }*/
+}
+
+
+
+.modal {
+  -webkit-overflow-scrolling: touch;
+  background: $white;
+  padding: 1rem 2rem;
+  max-width: 960px;
+  z-index: -10;
+
+
+  p {
+    color: $bluedarker;
+    padding: 1rem 0;
+    line-height: 1.2;
+
+  }
+
+  a {
+    color: $DRDorange;
+    font-family: $font-cursive;
+    font-size: 110%;
+    cursor: pointer;
+    &:hover {
+      color: $sand;
+    }
+  }
+
+    /*removes after underline for the close button on the modal*/
+    a.close-modal {
+     &:hover:after {
+       width: 0;
+       }
+    }
+} /*end of jquery-modal style*/
+
+
+
+
+/*===========slick carousel styles===============*/
+
+/* --position carousel side buttons*/
+.slick-prev {
+    left: 20px;
+    z-index: 1; /*included to get previous button to advance*/
+}
+
+.slick-next {
+  right: 20px;
+}
+
+.slick-next:before, .slick-prev:before {
+  display: none;
+  @media $small {
+    display: block;
+    font-size: 30px;
+    color: $DRDblue;
+  }
+}
+
+/*---styling dot buttons*/
+.slick-dots li button:before {
+    font-size: 12px;
+    color: $DRDblue;
+  }
+
+.slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: $DRDblue;
+}
+
+.slick-dots {
+  left: 0;
+}
+
+/*-------------Accordion styles-------------*/
+
+/*[data-accordion]>[data-control] = headings of accordion*/
+  /*creates the arrows at the accordion otherwise the css uses a background image and then rotates it.*/
+[data-accordion]>[data-control] {
+  border-bottom: 1px solid $DRDblue;
+    &:after {
+      content: '\25B8';
+      background-image: none;
+      color: $DRDblue;
+      font-size: 200%;
+      line-height: .7;
+    }
+    &:hover:after {
+      cursor: pointer;
+    }
+}
+
+/*the open content group*/
+[data-accordion].open{
+
+  border-bottom: 1px solid $DRDblue;
+  padding-bottom: 10px;
+
+  /*data control = h4 heading*/
+  >[data-control] {
+    border-bottom: none;
+    &:after {
+      content: '\25BE';
+      transform: none;
+    }
+  }
+}
+
+/*removes the borders on the data content*/
+[data-content]>*, [data-control] {
+  border: none;
+
+}

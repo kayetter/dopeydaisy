@@ -1,0 +1,16 @@
+.social-media-div {
+  padding: 3rem 0;
+  h2 {
+    padding-top: 3rem;
+  }
+  .social-group {
+    text-align: center;
+    margin: auto;
+    color: $white;
+    .social {
+      display: inline-block;
+      margin: 0 2rem;
+
+    }
+  }
+}

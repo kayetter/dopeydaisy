@@ -1,0 +1,110 @@
+#design {
+  position: relative;
+  width: 100%;
+
+
+  .row {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 0;
+    @media $small{
+      padding: 3rem;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+
+  .row2 {
+    @media $small {
+      justify-content: flex-end;
+    }
+  }
+
+  .day {
+    @mixin backImage '../images/suns/BlueSunrise.svg';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    width: 600px;
+    height: 600px;
+    transition: all .3s ease;
+    z-index: 45;
+
+
+  .day-content {
+    position: relative;
+    display: flex;
+    z-index: 40;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: visible;
+    width: 100%;
+    height: 360px;
+    border-radius: 50%;
+    padding: 0;
+    @media $xsmall {
+      padding: 0 .2rem;
+      width: 360px
+    }
+
+    h3 {
+      color: $DRDblue;
+      font-size: 130%;
+    }
+
+    p {
+      width: 100%;
+      color: $bluedark;
+      font-size: 95%;
+      line-height: 115%;
+      padding: 0;
+      padding-top: 10px;
+      text-align: center;
+    }
+
+    .bee-decoration {
+      position: absolute;
+      padding: 0;
+      top: 20px;
+      right: 75px;
+      height: 47px;
+
+    }
+
+  } /*end of day-content styling*/
+
+  } /*end of 'day' content*/
+
+  #pm {
+    @mixin backImage '../images/suns/NoonDay.svg';
+  }
+
+  #sunset {
+    @mixin backImage '../images/suns/OrangeSunset.svg';
+    /*@mixin backImage '../images/suns/Sunset_OgradZZL.svg';*/
+    /*@mixin backImage '../images/suns/Sunset_OgradZZR.svg';*/
+
+      h3 {
+      padding: 0;
+
+      line-height: 1.2;
+    }
+  }
+
+  .bees {
+    display: none;
+    @media $medium {
+      display: block;
+    }
+    position: relative;
+    margin-top: 6rem;
+    width: 50%;
+    flex-shrink: 3;
+  }
+
+
+}/*end of #design*/

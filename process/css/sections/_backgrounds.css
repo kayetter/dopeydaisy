@@ -1,0 +1,64 @@
+
+.background-pic{
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  z-index: -10;
+  @mixin backImage '../images/backgrounds/MT_yellow_flower2_300.jpg', left;
+  @media $small {
+    @mixin backImage '../images/backgrounds/MT_yellow_flower2_600.jpg', left;
+  }
+  @media $medium {
+    @mixin backImage '../images/backgrounds/MT_yellow_flower2_800.jpg', left;
+  }
+
+  @media $large {
+    @mixin backImage '../images/backgrounds/MT_yellow_flower2_1000.jpg', left;
+  }
+  @media $xlarge {
+    @mixin backImage '../images/backgrounds/MT_yellow_flower2_2000.jpg', left;
+  }
+}
+
+
+
+.org-yel-white-background {
+    background: linear-gradient( to bottom, $org-background-color 50%, $yel-background-color 75%, $white-background-color 100%);
+}
+.white-yel-org-background {
+    background: linear-gradient( to bottom, $white-background-color 25%, $yel-background-color 75%, $org-background-color 100%);
+}
+
+.org-background {
+  background-color: $org-background-color;
+}
+
+.org-yel-background {
+  background: linear-gradient(to bottom, $org-background-color 75%, $yel-background-color 100%);
+
+}
+
+.yel-white-background {
+  background: linear-gradient(to bottom, $yel-background-color 50%, $white-background-color 100%);
+}
+
+.white-background {
+  background: $white-background-color;
+    h1, h2, h3, h4, h5, p {
+        color: $DRDblue;
+    }
+  }
+
+.white-yel-background {
+  background: linear-gradient(to bottom, $white-background-color 90%, $yel-background-color 100%);
+}
+
+
+.yel-org-background {
+  background: linear-gradient(to bottom, $yel-background-color, $org-background-color);
+}
+
+.org-trans-background {
+  background: linear-gradient(to top, transparent, $org-background-color);
+}

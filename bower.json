@@ -1,0 +1,61 @@
+{
+  "name": "dopeydaisy",
+  "description": "dopydaisy package.json",
+  "main": "gulpfile.js",
+  "authors": [
+    "kristin yetter"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "divine",
+    "web-development"
+  ],
+  "homepage": "https://github.com/kayetter/dopeydaisy.git",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "jquery-modal": "^0.8.0",
+    "gsap": "^1.19.1",
+    "scrollmagic": "ScrollMagic#^2.0.5",
+    "slick-carousel": "^1.6.0",
+    "jquery-accordion": "*"
+  },
+  "overrides": {
+    "gsap": {
+      "main": [
+        "src/uncompressed/TweenMax.js",
+        "src/uncompressed/TimelineMax.js",
+        "src/uncompressed/TweenLite.js"
+      ]
+    },
+    "scrollmagic": {
+      "main": [
+        "scrollmagic/uncompressed/ScrollMagic.js",
+        "scrollmagic/uncompressed/plugins/debug.addIndicators.js",
+        "scrollmagic/uncompressed/plugins/animation.gsap.js"
+      ]
+    },
+    "slick-carousel": {
+      "main": [
+        "slick/slick.min.js",
+        "slick/slick.css"
+      ]
+    },
+    "jquery-accordion": {
+      "main": [
+        "js/jquery.accordion.js",
+        "css/jquery.accordion.css"
+      ]
+    }
+  },
+  "resolutions": {
+    "jquery": "^3.2.1"
+  }
+}

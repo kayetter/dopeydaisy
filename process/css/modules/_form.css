@@ -1,0 +1,129 @@
+.form-div {
+  max-width: 760px;
+  min-width: 300px;
+  width: 100%;
+  padding: 20px;
+  margin:  auto;
+
+
+  .form-instruction {
+    text-align: center;
+    color: $fontblue;
+    font-weight: 600;
+
+    a{
+      color: $fontblue;
+      width: 60%;
+      margin: auto;
+      &:hover, &focus {
+        color: $DRDblue;
+      }
+      &:after {
+        background-color: $DRDblue;
+        /*margin: auto;*/
+      }
+      &:hover:after {
+        background-color: $DRDblue;
+      }
+    }
+  } /*end of form instruction*/
+
+  .form {
+    width: 100%;
+
+    .form-group {
+      margin-bottom: 1rem;
+      .form-control {
+        display: block;
+        width: 100%;
+        font: inherit;
+        padding: .9rem 1.1rem;
+        border-radius: 2px;
+        line-height: 1.6;
+        border: 1px solid #e6e9ec;
+        &[type=checkbox]{
+          display: inline-block;
+          width: auto;
+        }
+      }
+
+
+      .form-label {
+        display: block;
+        color: $fontblue;
+        margin-bottom: 1rem;
+        &.checkbox {
+          display: inline-block;
+        }
+      }
+      select {
+        font: inherit;
+        color: $DRDblue;
+        padding: 1rem;
+        overflow-y: auto;
+        border: none;
+
+        option {
+          padding: .5rem;
+          }
+
+        .selected {
+          background: $DRDorange;
+          color: $white;
+        }
+      }
+    }/*end form-group*/
+
+    .flex-group{
+      display: block;
+      @media $small {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        div label {
+          text-align: left;
+        }
+
+      }
+      div {
+        width: 100%;
+        label, select, option {
+          margin: auto;
+          text-align: center;
+        }
+      }
+     }
+    .btn {
+    background: transparent;
+    width: 100%;
+    line-height: 1.6;
+    font: inherit;
+    color: $fontblue;
+    font-weight: bold;
+    border-radius: 2px;
+    white-space: normal;
+    display: inline-block;
+    padding: .8rem 1.875rem;
+    border: 2px solid $fontblue;
+    cursor: pointer;
+    &:hover {
+      border-color: $DRDblue;
+      color: $DRDblue;
+    }
+
+    } /*end of btn*/
+  } /*end form*/
+}/*end form-div*/
+
+.error-div {
+  font: inherit;
+  max-width: 500px;
+  margin: auto;
+  color: $DRDorange;
+  padding: 1rem;
+  border: 1px solid $DRDorange;
+  li{
+    list-style-type: disc;
+    margin-left: 2rem;
+  }
+}

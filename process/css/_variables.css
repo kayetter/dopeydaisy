@@ -1,0 +1,51 @@
+
+
+
+
+$DRDblue: rgb(0, 181, 197); /*#00B5C5*/
+$DRDorange:   rgb(230, 99, 41); /*E66329*/
+$DRDyellow: rgb(255, 173, 66); /*#FFAD42*/
+$sand: rgb(253, 227, 194); /*#FDE3C2*/
+$blue: rgb(74, 120, 197);
+$yellow: rgb(229, 185, 18);
+$yellow2: rgb(223, 158, 6);
+$daisy: rgb(252, 255, 11);
+$grn: rgb(96, 184, 97);
+$ltgrn: rgb(159, 249, 102);
+$white: rgb(239, 244, 236);
+
+
+$brightblue: color($DRDblue lightness(40%)); /*#28959f rgb(0, 187, 204)*/
+$brightyellow: color($DRDyellow lightness(40%)); /*#cc7400 rgb(204 116 0)*/
+$brightorange: color($DRDorange lightness(40%));  /*#b74615 rgb(183 70 21)*/
+$fontblue: color($DRDblue saturation(60%)); /*rgb(40, 149, 159)*/
+$black-cvr: rgba(0,0,0,.5);
+$black-hvr: rgba(0,0,0,.2);
+$white-2: color($sand lightness(92%));
+$white-4: color($sand lightness(94%));
+$white-6: color($sand lightness(96%));
+$white-8: color($sand lightness(98%));
+$orangedarker: color($DRDorange blackness(30%));
+$bluedarker: color($DRDblue blackness(30%));
+$bluedark: color($DRDblue shade(45%));
+
+$blue-background-color: color($DRDblue a(.8));
+$org-background-color: color($DRDorange a(.8));
+$yel-background-color: color($DRDyellow a(.8));
+$white-background-color: color($white a(.8));
+
+
+
+
+$font-main:'Raleway', sans-serif;
+$font-heading: 'Roboto Slab', serif;
+$font-cursive: 'Dancing Script', cursive;
+
+$fwt-thin: 300;
+$fwt-bold: 700;
+
+$xsmall: screen and (min-width: 380px);
+$small: screen and (min-width: 600px);
+$medium: screen and (min-width: 760px);
+$large: screen and (min-width: 1200px);
+$xlarge: screen and (min-width: 1400px);

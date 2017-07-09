@@ -1,0 +1,11 @@
+
+# Use PHP56
+#AddHandler application/x-httpd-php56 .php
+
+#turn on url rewriting
+RewriteEngine on
+
+#remove the need for .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php

@@ -1,0 +1,25 @@
+.nav-elements {
+    padding: 0;
+    background: $DRDorange;
+    margin: 0 auto 2rem;
+
+    .nav-bar {
+        display: block;
+
+        margin: 0 auto;
+        text-align: center;
+        li {
+            padding: 1rem;
+        }
+
+        a {
+          &:hover:after {
+            width:200px;
+          }
+        }
+
+  }  /*nav-bar*/
+
+
+
+}/*nav-elements*/

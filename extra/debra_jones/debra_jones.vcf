@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Debra Jones 
+N:Jones;Debra;;;
+EMAIL;TYPE=INTERNET;TYPE=WORK:deb@bodymindbusiness.com
+TEL;TYPE=CELL:(406) 581-9182
+ADR;TYPE=HOME:;;;Filer;ID;83328;United States of America
+ORG:BodyMindBusiness
+TITLE:Owner
+URL;TYPE=WORK:https\://bodymindbusiness.com
+item1.URL:drd.cards/debra.jones
+item1.X-ABLabel: dopeydaisy bizcard
+END:VCARD

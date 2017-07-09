@@ -1,0 +1,107 @@
+
+
+#gallery {
+  .carousel-section {
+    min-height: auto;
+    padding-bottom: 7rem;
+  }
+
+
+ h2{
+   font-size: 3.0rem;
+   line-height: 2;
+   width: 80%;
+   margin: auto;
+   font-weight: 500;
+   padding: 0;
+ }
+
+  .image img {
+    max-width: 350px;
+    vertical-align: middle;
+  }
+
+  p {
+    text-align: center;
+    margin: auto;
+  }
+
+  .footer {
+    position: relative;
+  }
+
+
+}/*end of #gallery*/
+
+/*styling for modal. Remember this is added to body so cannot be nested within #gallery*/
+.gallery-article {
+  position: relative;
+  padding-top: 2rem;
+  width: 95%;
+  color: $bluedarker;
+    .container {
+      padding: 0;
+      padding-bottom: 3rem;
+      .row {
+        @media $medium {
+          display: flex;
+        }
+        @media $large{
+          .info-summary {
+            margin-left: 2rem;
+            margin-right: 1rem;
+            p {
+              line-height: 1.4;
+            }
+          }
+        }
+      }
+    }
+
+    h4, h2 {
+      width: 100%;
+      letter-spacing: 3px;
+      color: $DRDblue;
+    }
+
+    h3 {
+      width: 50%;
+      margin: auto;
+      color: $DRDblue;
+    }
+
+    .favicon {
+      width: 25px;
+      @media $small {
+        width: 40px;
+      }
+    }
+
+
+
+    strong {
+        display: inline-block;
+        font-size: 90%;
+        color: $DRDblue;
+        font-weight: 600;
+        letter-spacing: 2px;
+      }
+
+      .picture {
+        width: 100%;
+        max-width: 300px;
+      }
+
+
+    .image {
+      padding: 1rem;
+        img {
+          display: block;
+          width: 100%;
+          max-width: 350px;
+          min-width: 250px;
+          margin: auto;
+        }
+    }
+  }
+/* end of gallery-article styling*/

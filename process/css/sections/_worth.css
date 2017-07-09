@@ -1,0 +1,59 @@
+#worth {
+  .content {
+    max-width: 900px;
+    padding: 3rem;
+    margin: auto;
+    color: $DRDblue;
+
+    p {
+      color: $bluedarker;
+      padding: 1rem;
+
+    }
+
+    a  {
+      color: $DRDorange;
+
+
+      &:hover, em:hover {
+        color: $brightyellow;
+      }
+
+      &:hover:after {
+        background: $brightyellow;
+      }
+    }
+
+    ol li {
+      counter-increment: item;
+      margin-bottom: 5px;
+      color: $bluedarker;
+      padding-left: 25px;
+
+      strong {
+        color: $DRDblue;
+        font-weight: 600;
+      }
+    }
+
+    ol li:before {
+      margin-right: 10px;
+      font-family: $font-cursive;
+      content: counter(item);
+      background: $DRDorange;
+      border-radius: 100%;
+      color: $white;
+      width: 3rem;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .signature {
+      img {
+      display: inline-block;
+      width: 40px;
+      }
+    }
+
+  }
+}

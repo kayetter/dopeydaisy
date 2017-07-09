@@ -1,0 +1,19 @@
+#bizcard{
+  #bizimg-anchor{
+    display: block;
+    width: 80%;
+    max-width: 480px;
+    border-radius: 10px;
+    background: $blue;
+    padding: 10px;
+    border: 3px solid color($blue lightness(45%));
+    margin: 4rem auto;
+    &:hover{
+      background: $yellow;
+      border-color: $daisy;
+    }
+    &:hover:after {
+      width: 0;
+    }
+  }
+}
