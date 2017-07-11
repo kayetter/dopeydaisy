@@ -1,6 +1,4 @@
-<?php require_once("../vendor/autoload.php");
-\Tinify\setKey("_AjaKK2LhIi8t8NQvm9nqcDvEJZIOx_I");
- ?>
+
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
@@ -51,7 +49,7 @@ if(isset($_POST["submit"])){
 
   $files = $_FILES;
   $errors = array();
-  $img_size = 1500000;
+  $max_file_size = 1500000;
 
   //if file upload process in POST returned no errors
   if($files["vcard"]["error"]==UPLOAD_ERR_OK  && $files["bizimg"]["error"]==UPLOAD_ERR_OK ){
@@ -66,21 +64,27 @@ if(isset($_POST["submit"])){
     $bizimg = $files["bizimg"];
 
     //for drdcard keep path relative to drd.cards domain and new file (trimming of the root directory)
+    if($isDev){
+      $bizimg_og_dir = "bizimg/";
+    }
+
+    if($isProd){
+      $bizimg_og_dir = "http://drd.cards/bizimg/";
+    }
+
     $vcard_drdcard_path = "vcards/".pathinfo($vcard_new_path,PATHINFO_FILENAME).".".pathinfo($vcard_new_path,PATHINFO_EXTENSION);
-    $bizimg_drdcard_path = "bizimg/".pathinfo($bizimg_new_path,PATHINFO_FILENAME).".".pathinfo($bizimg_new_path,PATHINFO_EXTENSION);
+    $bizimg_drdcard_path = $bizimg_og_dir.pathinfo($bizimg_new_path,PATHINFO_FILENAME).".".pathinfo($bizimg_new_path,PATHINFO_EXTENSION);
 
     //validate files
     //validate .vcf, .jpg, .gif, png extensions
 
     $formOK = validate_extensions($files);
-    //validate files do not exceed max limit
-    // if($formOK){
-      // $formOK = validate_file_size($files, $img_size);
-    // }
+
     //validate that file is an image
     if($formOK){
       $formOK = validate_image($bizimg);
     }
+
     //validate that file is .vcf
     if($formOK){
       $formOK = validate_vcard($vcard);
@@ -96,7 +100,7 @@ if(isset($_POST["submit"])){
         //if all errors are empty then process files
     if($formOK){
       //move files to target directory and filename
-      $user_bizcard_id = create_file_records($files, $user_id, $og, $img_size);
+      $user_bizcard_id = create_file_records($files, $user_id, $og, $max_file_size, $bizimg_dir);
 
       if($user_bizcard_id){
         //with new $user_bizcard_id_create association bizcard record

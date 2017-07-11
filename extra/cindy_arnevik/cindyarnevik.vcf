@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Cindy Arnevik
+N:Arnevik;Cindy;;;
+EMAIL;TYPE=INTERNET;TYPE=WORK:cindy.arnevik@midmoag.com
+TEL;TYPE=CELL:6363583993
+ADR;TYPE=WORK:;;I am here;...\nSt Louis;MO;;
+ORG:Mid Missouri Agribusiness Consulting Group
+TITLE:Partner
+item1.URL:https\://midmoag.com
+item1.X-ABLabel:_$!<HomePage>!$_
+item2.URL:http\://drd.cards/cindy.arnevik
+item2.X-ABLabel:dopeydaisy bizcard
+END:VCARD

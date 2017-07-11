@@ -48,7 +48,7 @@
     </pre>
 
   <div class="form-div">
-      <img style = "width: 100%; max-width: 600px; margin: auto;" src="images/drdbizcard.png" alt="">
+
 
       <!-- bizcard entry form -->
     <form method="post" action="test_upload.php?user_id=2000004" name="file-upload" enctype="multipart/form-data" id="create-bizcard-form" class="form">
@@ -70,11 +70,11 @@
 
       <!-- og:title-->
       <label for="og-title">Input title (<100 chars)</label>
-      <input type="text" name="og[title]" id='og-title' required maxlength="100"><br />
+      <input type="text" name="og[title]" id='og-title' maxlength='100' max='100' title="maximum of 100 characters"><br />
 
       <!-- og:description -->
       <label for="og-description">Input description (<200 chars) <label>
-      <input type="text" name="og[desc]" id='og-description' maxlength="200" title="maximum length is 200 characters"><br />
+      <input type="text" name="og[desc]" id='og-description' maxlength="200" title="maximum of 200 characters"><br />
     </div>
 
       <div>

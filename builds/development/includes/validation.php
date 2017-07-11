@@ -171,7 +171,7 @@ function validate_vcard($vcard){
 function validate_image($img){
   global $errors;
   $check = getimagesize($img["tmp_name"]);
-  //validate that it is an image
+    //validate that it is an image
   if($check !== false) {
     return $formOk = true;
   } else {
@@ -179,19 +179,6 @@ function validate_image($img){
       return $formOK = false;
   }
 
-}
-
-function validate_file_size($files, $size){
-  global $errors;
-  $kbsize = $size/1000;
-  $mbsize = $kbsize/1000;
-  foreach($files as $key => $file){
-    if($file["size"] > $size) {
-    $file =
-    $errors["file-size"] = "{$key} - {$file["name"]} cannot exceed {$mbsize} megabytes";
-    $formOK = false;
-  } else {return $formOK=true;}
-  }
 }
 
 //more generic duplicate record validation

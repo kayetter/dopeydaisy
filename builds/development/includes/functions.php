@@ -9,7 +9,7 @@ function mysql_prep($string) {
   global $connection;
   //quotemeta will escape $
   // $escaped_string = quotemeta($string);
-  $escaped_string = mysqli_real_escape_string($connection, $string);
+  $escaped_string = mysqli_real_escape_string($connection,( $string));
   return $escaped_string;
 }
 
@@ -169,7 +169,7 @@ function find_user_by_username($username) {
   $query .= "WHERE username = '{$username}' ";
   $query .= " LIMIT 1";
   $result = mysqli_query($connection, $query);
-  confirm_query($result);
+  confirm_query_query($result, $query);
   $user_record = mysqli_fetch_assoc($result);
   if($user_record){
     return $user_record;
@@ -286,7 +286,7 @@ function find_active_status($record_id, $table){
   $query .= "{$record_id}";
   $query .= " LIMIT 1";
   $result = mysqli_query($connection, $query);
-  confirm_query($result);
+  confirm_query_query($result, $query);;
   $result_set = mysqli_fetch_assoc($result);
   $active = $result_set["is_active"];
   if($active==true){
@@ -372,7 +372,8 @@ function create_new_filename($dir, $file){
     $continue = true;
     while ($continue) {
         $uuid = uuidSecure();
-        $new_filename = $dir.$uuid.".".pathinfo($file,PATHINFO_EXTENSION);
+        $uuid_stripped = str_replace("-","", $uuid);
+        $new_filename = $dir.$uuid_stripped.".".pathinfo($file,PATHINFO_EXTENSION);
         if(!file_exists($new_filename)){
           $continue = false;
         }
@@ -380,14 +381,15 @@ function create_new_filename($dir, $file){
     }
 }
 
-function move_uploaded_files($files, $size){
+function move_uploaded_files($files, $max_file_size, $bizimg_dir){
     global $errors;
     $file_err = "";
-    $kbsize = $size/1000;
+    $kbsize = $max_file_size/1000;
     $mbsize = $kbsize/1000;
     foreach($files as $file => $key){
-      if($key["size"] > $size && strpos($key["type"], "image") !== false){
-        $result = optimize_image($key["tmp_name"], $key["new_path"]);
+      if($key["size"] > $max_file_size && strpos($key["type"], "image") !== false){
+        //compress image size until it meets criteria starting at quality = 90
+        $result = validate_img_size($key, $max_file_size, 90, $bizimg_dir);
         } else {
           $result = move_uploaded_file($key["tmp_name"], $key["new_path"]);
           }
@@ -413,7 +415,7 @@ function insert_bizcard_file_records($files, $user_id){
     $query .= ") VALUES (";
     $query .= "'{$key["name"]}', '{$key["new_path"]}', {$user_id}); ";
     $result = mysqli_query($connection, $query);
-    confirm_query($result);
+    confirm_query_query($result, $query);
       if($result && mysqli_affected_rows($connection)>=0){
         $ids[$file] = mysqli_insert_id($connection);
       } else { $file_err .= "{$key["new_path"]}, ";}
@@ -437,7 +439,7 @@ function insert_og_tags($og, $user_id){
     $query .= ") VALUES (";
     $query .= "'{$og_title}', '{$og_desc}', {$user_id}); ";
     $result = mysqli_query($connection, $query);
-    confirm_query($result);
+    confirm_query_query($result, $query);
       if($result && mysqli_affected_rows($connection)>0){
         $_SESSION["message"] = "og records created";
         $og_tag_id = mysqli_insert_id($connection);
@@ -463,7 +465,7 @@ function create_bizcard_file_assoc($ids, $og_tag_id, $user_id){
   } else { $_SESSION["message"] = "file assoc not succesful";}
 }
 
-function create_file_records($files, $user_id, $og, $file_size){
+function create_file_records($files, $user_id, $og, $max_file_size, $bizimg_dir){
   global $connection;
   global $errors;
   $recordOK = true;
@@ -479,7 +481,7 @@ function create_file_records($files, $user_id, $og, $file_size){
   if(!$user_bizcard_id){
     $recordOK = false;
   }
-  $result = move_uploaded_files($files, $file_size);
+  $result = move_uploaded_files($files, $max_file_size, $bizimg_dir);
   if(!$result){
     $recordOK = false;
   }
@@ -568,14 +570,16 @@ function get_bizcard_items($user_bizcard_id){
 }
 
 function build_bizcard_output($drdcard,$drdpin,$vcard,$bizimg,$og_title,$og_desc){
+  $og_title = htmlentities($og_title);
+  $og_desc = htmlentities($og_desc);
   $output = "<?php include(\"layouts/head2.php\"); ?>";
   $output .= "<title>{$drdcard}</title>";
   $output .= "<!-— facebook open graph tags -->";
-  $output .= "<meta property='og:type' content='website' />";
-  $output .= "<meta property='og:url' content='http://drd.cards/{$drdcard}' />";
-  $output .= "<meta property='og:title' content='{$og_title}' />";
-  $output .= "<meta property='og:description' content='{$og_desc}' />";
-  $output .= "<meta property='og:image' content='{$bizimg}' />";
+  $output .= "<meta property=\"og:type\" content=\"website\" />";
+  $output .= "<meta property=\"og:url\" content=\"http://drd.cards/{$drdcard}\" />";
+  $output .= "<meta property=\"og:title\" content=\"{$og_title}\" />";
+  $output .= "<meta property=\"og:description\" content=\"{$og_desc}\" />";
+  $output .= "<meta property=\"og:image\" content=\"{$bizimg}\" />";
   $output .= "<?php include(\"layouts/header2.php\"); ?>";
   $output .= "<div id='bizcard'><img class='bizimg' src='{$bizimg}' alt=\"{$drdcard}'s bizimg\">";
   $output .= "<a id='bizimg-anchor' href='{$vcard}' download> download contact </a></div>";
@@ -583,30 +587,80 @@ function build_bizcard_output($drdcard,$drdpin,$vcard,$bizimg,$og_title,$og_desc
   return $output;
   }
 
-//path for tinify must start at root
-function resize_image($img, $width, $toFile){
-  \Tinify\setKey("_AjaKK2LhIi8t8NQvm9nqcDvEJZIOx_I");
-  $source = \Tinify\fromFile($img);
-  $resized = $source->resize(array(
-      "width" => $width
-  ));
-  $resized->toFile("../master_files/thumbnail.jpg");
+  function resize_image($file, $w, $h, $crop=FALSE) {
+    list($width, $height) = getimagesize($file);
+    $r = $width / $height;
+    if ($crop) {
+        if ($width > $height) {
+            $width = ceil($width-($width*abs($r-$w/$h)));
+        } else {
+            $height = ceil($height-($height*abs($r-$w/$h)));
+        }
+        $newwidth = $w;
+        $newheight = $h;
+    } else {
+        if ($w/$h > $r) {
+            $newwidth = $h*$r;
+            $newheight = $h;
+        } else {
+            $newheight = $w/$r;
+            $newwidth = $w;
+        }
+
+    $src = imagecreatefromjpeg($file);
+    $dst = imagecreatetruecolor($newwidth, $newheight);
+    imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+
+    return $dst;
+}
 }
 
-function optimize_image($img, $toFile){
-  \Tinify\setKey("_AjaKK2LhIi8t8NQvm9nqcDvEJZIOx_I");
-$source = \Tinify\fromFile($img);
-$source->toFile($toFile);
-return true;
+
+function compress_image($source_url, $destination_url, $quality) {
+  $info = getimagesize($source_url);
+
+      if ($info['mime'] == 'image/jpeg')
+            $image = imagecreatefromjpeg($source_url);
+
+      elseif ($info['mime'] == 'image/gif')
+            $image = imagecreatefromgif($source_url);
+
+    elseif ($info['mime'] == 'image/png')
+            $image = imagecreatefrompng($source_url);
+      imagejpeg($image, $destination_url, $quality);
+
+  return $destination_url;
 }
 
-function optimize_image2($img){
-$factory = new \ImageOptimizer\OptimizerFactory();
-$optimizer = $factory->get();
-$filepath = $toFile;
+function validate_img_size($bizimg, $max_file_size, $quality, $dc_root){
+  $new_filename = $bizimg["new_path"];
+  global $errors;
+  if(!file_exists($dc_root."temp/")){
+        $temp_dir = mkdir($dc_root."temp/");
+      } else {$temp_dir = $dc_root."temp/";}
+      $bizimg_temp = $temp_dir."bizimg_temp.jpg";
+      $result = move_uploaded_file($bizimg["tmp_name"], $bizimg_temp);
+      if(!$result){ $errors["file-move"] = "could not move file";} else {
+          $i = 1;
+          $continue = true;
+          $file = $bizimg_temp;
+          while($continue == true){
+          $new_img = compress_image($file, $new_filename, $quality);
+          if(filesize($new_img) < $max_file_size){
+            $continue = false;
+            unlink($bizimg_temp);
+            rmdir($temp_dir);
+            return $new_img;
+          }
+          unlink($new_filename);
+          $quality = $quality - 10;
+          $i++;
+        } //end while loop
 
-$optimizer->optimize($filepath);
-//optimized file overwrites original one
+    }
 }
+
+
+
 
 ?>
