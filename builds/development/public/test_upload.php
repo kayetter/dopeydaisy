@@ -40,8 +40,8 @@ if(isset($_POST["submit"])){
   $drdpin = mysql_prep($_POST["drdpin"]);
   $hashed_drdpin = password_hash($drdpin,PASSWORD_DEFAULT);
   $og = $_POST["og"];
-  $og_title = mysql_prep($_POST["og"]["title"]);
-  $og_desc = mysql_prep($_POST["og"]["desc"]);
+  $og_title = $_POST["og"]["title"];
+  $og_desc = $_POST["og"]["desc"];
 
   $vcard_dir = $dc_root."vcards/";
   $bizimg_dir = $dc_root."bizimg/";
@@ -110,7 +110,6 @@ if(isset($_POST["submit"])){
       if($bizcard_id){
         $drdcard_content = build_bizcard_output(
           $drdcard,
-          $drdpin,
           $vcard_drdcard_path,
           $bizimg_drdcard_path,
           $og_title,

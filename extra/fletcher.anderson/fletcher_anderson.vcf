@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Fletcher Anderson
+N:Anderson;Fletcher;;;
+EMAIL;TYPE=INTERNET;TYPE=WORK:info@AndersonPumpAndWell.com
+TEL;TYPE=CELL:406-837-1665
+ADR;TYPE=WORK:;;PO Box 2066;Bigfork;MT;59911;
+ORG:Anderson Pump & Well Service
+TITLE:Owner
+item1.URL:https\://drd.cards/anderson.wells
+item1.X-ABLabel:dopeydaisy bizcard
+END:VCARD

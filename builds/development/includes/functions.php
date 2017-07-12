@@ -9,7 +9,7 @@ function mysql_prep($string) {
   global $connection;
   //quotemeta will escape $
   // $escaped_string = quotemeta($string);
-  $escaped_string = mysqli_real_escape_string($connection,( $string));
+  $escaped_string = mysqli_real_escape_string($connection,$string);
   return $escaped_string;
 }
 
@@ -569,17 +569,20 @@ function get_bizcard_items($user_bizcard_id){
   return null;}
 }
 
-function build_bizcard_output($drdcard,$drdpin,$vcard,$bizimg,$og_title,$og_desc){
+function build_bizcard_output($drdcard,$vcard,$bizimg,$og_title,$og_desc){
   $og_title = htmlentities($og_title);
   $og_desc = htmlentities($og_desc);
+  $drdcard = htmlentities($drdcard);
+  $vcard = htmlentities($vcard);
+  $bizimg = htmlentities($bizimg);
   $output = "<?php include(\"layouts/head2.php\"); ?>";
   $output .= "<title>{$drdcard}</title>";
   $output .= "<!-— facebook open graph tags -->";
   $output .= "<meta property=\"og:type\" content=\"website\" />";
-  $output .= "<meta property=\"og:url\" content=\"http://drd.cards/{$drdcard}\" />";
+  $output .= "<meta property=\"og:url\" content=\"https://drd.cards/{$drdcard}\" />";
   $output .= "<meta property=\"og:title\" content=\"{$og_title}\" />";
   $output .= "<meta property=\"og:description\" content=\"{$og_desc}\" />";
-  $output .= "<meta property=\"og:image\" content=\"{$bizimg}\" />";
+  $output .= "<meta property=\"og:image\" content=\"https://drd.cards/{$bizimg}\" />";
   $output .= "<?php include(\"layouts/header2.php\"); ?>";
   $output .= "<div id='bizcard'><img class='bizimg' src='{$bizimg}' alt=\"{$drdcard}'s bizimg\">";
   $output .= "<a id='bizimg-anchor' href='{$vcard}' download> download contact </a></div>";
@@ -658,6 +661,16 @@ function validate_img_size($bizimg, $max_file_size, $quality, $dc_root){
         } //end while loop
 
     }
+}
+
+function retrieve_og_tags($url){
+  $graph = OpenGraph::fetch($url);
+  var_dump($graph->keys());
+  var_dump($graph->schema);
+
+  foreach ($graph as $key => $value) {
+  	echo "$key => $value<br>";
+  }
 }
 
 

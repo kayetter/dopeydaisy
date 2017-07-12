@@ -6,13 +6,13 @@ $DRDblue: rgb(0, 181, 197); /*#00B5C5*/
 $DRDorange:   rgb(230, 99, 41); /*E66329*/
 $DRDyellow: rgb(255, 173, 66); /*#FFAD42*/
 $sand: rgb(253, 227, 194); /*#FDE3C2*/
-$blue: rgb(74, 120, 197);
-$yellow: rgb(229, 185, 18);
-$yellow2: rgb(223, 158, 6);
-$daisy: rgb(252, 255, 11);
-$grn: rgb(96, 184, 97);
-$ltgrn: rgb(159, 249, 102);
-$white: rgb(239, 244, 236);
+$blue: rgb(74, 120, 197); /*	#4a78c5*/
+$yellow: rgb(229, 185, 18); /*	#e5b912*/
+$yellow2: rgb(223, 158, 6); /*	#df9e06*/
+$daisy: rgb(252, 255, 11); /*	#fcff0b*/
+$grn: rgb(96, 184, 97); /*	#60b861*/
+$ltgrn: rgb(159, 249, 102); /*#9ff966*/
+$white: rgb(239, 244, 236); /*	#eff4ec*/
 
 
 $brightblue: color($DRDblue lightness(40%)); /*#28959f rgb(0, 187, 204)*/
